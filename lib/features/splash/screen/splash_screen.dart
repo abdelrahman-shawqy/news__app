@@ -6,7 +6,14 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body:
+      Container(
+        height: 200,
+        width: 200,
+        color: Colors.red,
+      ),
+    );
 
 
 
