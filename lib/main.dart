@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/themes/app_Theme.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
 
       theme: AppTheme.LightTheme,
       darkTheme: AppTheme.DarkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
 
       initialRoute: Routes.splash,
       onGenerateRoute: AppRouter.onGenerateRoute,
