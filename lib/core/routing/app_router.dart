@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_appp/core/routing/routes.dart';
-import 'package:news_appp/features/news/presentation/screens/home_screen.dart';
+import 'package:news_appp/features/home_screen/presentation/screens/home_screen.dart';
 
 import '../../features/splash_screen/presentation/screen/splash_screen.dart';
 
