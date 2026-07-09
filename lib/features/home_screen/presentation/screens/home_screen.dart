@@ -11,9 +11,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBarr(title: "Home",),
-        body: Container(color: AppColors.primaryColorDark
-
+        appBar: AppBarr(title: "Home"),
+        body: Container(
+          color: AppColors.primaryColorDark,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Good Morning \nHere is Some News For You",
+                  style: AppTextStyles.m500Dark,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

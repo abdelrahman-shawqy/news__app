@@ -12,7 +12,18 @@ static TextStyle mBarDark=GoogleFonts.inter(
   fontWeight: FontWeight.w500,
   fontSize: 20,
   color: AppColors.primaryColor,
-
 );
+
+static TextStyle m500=GoogleFonts.inter(
+  fontWeight: FontWeight.w500,
+  fontSize: 24,
+  color: AppColors.primaryColorDark,
+);
+static TextStyle m500Dark=GoogleFonts.inter(
+  fontWeight: FontWeight.w500,
+  fontSize: 24,
+  color: AppColors.primaryColor,
+);
+
 
   }
