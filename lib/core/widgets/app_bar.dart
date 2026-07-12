@@ -11,15 +11,19 @@ final String title;
     return AppBar(
         toolbarHeight: 72,
         backgroundColor: AppColors.primaryColorDark,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 24),
-          child: Icon(Icons.menu,size: 24,weight: 24,color: AppColors.primaryColor,),
-        ),
-        title: Center(child: Text(title,style: AppTextStyles.mBarDark)),
+      centerTitle: true,
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 24),
+        child: IconButton(onPressed: (){
+          Scaffold.of(context).openDrawer();
+        }, icon: Icon(Icons.menu,size: 24,weight: 24,color: AppColors.primaryColor,))
+      ),
+        title: Text(title,style: AppTextStyles.mBarDark),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24),
-            child: Icon(Icons.search,size: 24,weight: 24,color: AppColors.primaryColor,),
+            child: IconButton(onPressed: (){},
+                icon: Icon(Icons.search,size: 24,weight: 24,color: AppColors.primaryColor,)),
           )],
       );
 

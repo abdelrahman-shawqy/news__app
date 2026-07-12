@@ -24,6 +24,16 @@ static TextStyle m500Dark=GoogleFonts.inter(
   fontSize: 24,
   color: AppColors.primaryColor,
 );
+static TextStyle b700=GoogleFonts.inter(
+  fontWeight: FontWeight.w700,
+  fontSize: 24,
+  color: AppColors.primaryColorDark,
+);
+static TextStyle b700Drawer=GoogleFonts.inter(
+  fontWeight: FontWeight.w700,
+  fontSize: 20,
+  color: AppColors.primaryColor,
+);
 
 
   }
