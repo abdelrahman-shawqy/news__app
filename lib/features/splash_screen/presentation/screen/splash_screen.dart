@@ -15,43 +15,49 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
 
-  late AnimationController _controller ;
+  late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _controller=AnimationController(
+    _controller = AnimationController(
       duration: const Duration(milliseconds: 1800),
-        vsync: this);
-
-    _fadeAnimation=Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent:_controller , curve: Curves.easeInOut)
+      vsync: this,
     );
 
-    _scaleAnimation=Tween<double>(begin: 0.85, end: 1.0).animate(
-        CurvedAnimation(parent:_controller , curve: Curves.easeOutBack)
-    );
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+    _scaleAnimation = Tween<double>(
+      begin: 0.85,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
     _controller.forward();
-    Timer(const Duration (milliseconds: 3200), (){
-      if(mounted){
-        _controller.reverse().then((_){
+    Timer(const Duration(milliseconds: 3200), () {
+      if (mounted) {
+        _controller.reverse().then((_) {
           Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
         });
       }
     });
   }
+
   @override
-  void dispose(){
+  void dispose() {
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDark =
+        Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: Color(0xff171717),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: FadeTransition(
         opacity: _fadeAnimation,
         child: Center(
@@ -63,7 +69,8 @@ class _SplashScreenState extends State<SplashScreen>
                 child: ScaleTransition(
                   scale: _scaleAnimation,
                   child: Image.asset(
-                    AppImages.splashLogoDark,
+                    !isDark?
+                    AppImages.splashLogo:AppImages.splashLogoDark,
                     height: 298,
                     width: 298,
                   ),
@@ -73,7 +80,9 @@ class _SplashScreenState extends State<SplashScreen>
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Image.asset(
-                  AppImages.splashBrandingDark,
+                  !isDark
+                      ? AppImages.splashBranding
+                      : AppImages.splashBrandingDark,
                   height: 85,
                   width: 214,
                 ),
