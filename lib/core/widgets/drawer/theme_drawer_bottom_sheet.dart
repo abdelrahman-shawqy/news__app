@@ -5,8 +5,8 @@ import 'package:news_appp/core/themes/app_Colors.dart';
 import '../../constants/app_images.dart';
 import '../../themes/app_text_styles.dart';
 
-class DrawerBottomSheet extends StatelessWidget {
-  const DrawerBottomSheet({
+class ThemeDrawerBottomSheet extends StatelessWidget {
+  const ThemeDrawerBottomSheet({
     super.key,
     required this.title1,
     required this.title2,
@@ -16,7 +16,7 @@ class DrawerBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isEnglish=context.locale==Locale('en');
+    bool isDark = true;
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
       width: double.infinity,
@@ -35,10 +35,10 @@ class DrawerBottomSheet extends StatelessWidget {
                 children: [
                   Text(title1, style: AppTextStyles.b700Drawer),
 
-                  isEnglish?Icon(
-                    Icons.gpp_good_outlined,
-                    color: AppColors.primaryColor,
-                    size: 24
+                  !isDark?Icon(
+                      Icons.gpp_good_outlined,
+                      color: AppColors.primaryColor,
+                      size: 24
                   ):SizedBox(),
                 ],
               ),
@@ -52,7 +52,7 @@ class DrawerBottomSheet extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(title2, style: AppTextStyles.b700Drawer),
-                  isEnglish?SizedBox():Icon(
+                  !isDark?SizedBox():Icon(
                     Icons.gpp_good_outlined,
                     color: AppColors.primaryColor,
                     size: 24,

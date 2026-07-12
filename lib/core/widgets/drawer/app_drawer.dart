@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:news_appp/core/constants/app_images.dart';
 import 'package:news_appp/core/themes/app_Colors.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
+import 'package:news_appp/core/widgets/drawer/theme_drawer_bottom_sheet.dart';
 
 import '../../localization/app_localization.dart';
 import '../../routing/routes.dart';
-import 'drawer_bottom_sheet.dart';
+import 'localization_drawer_bottom_sheet.dart';
 import 'icon_drawer.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -71,7 +72,7 @@ class AppDrawer extends StatelessWidget {
                       isDismissible: true,
                       context: context,
                       builder: (context) =>
-                          DrawerBottomSheet(
+                          ThemeDrawerBottomSheet(
                             title1: "light".tr(),
                             title2: "dark".tr(),
 
@@ -98,7 +99,7 @@ class AppDrawer extends StatelessWidget {
                       isDismissible: true,
                       context: context,
                       builder: (context) =>
-                          DrawerBottomSheet(
+                          LocalizationDrawerBottomSheet(
                             title1: "english".tr(),
                             title2: "arabic".tr(),
 
