@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_appp/core/constants/app_images.dart';
 import 'package:news_appp/core/themes/app_Colors.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 
+import '../../localization/app_localization.dart';
 import '../../routing/routes.dart';
 import 'drawer_bottom_sheet.dart';
 import 'icon_drawer.dart';
@@ -12,6 +14,7 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isEnglish = context.locale==AppLocalization.fallbackLocale;
     return Container(
       width: MediaQuery
           .of(context)
@@ -24,7 +27,7 @@ class AppDrawer extends StatelessWidget {
             height: 166,
             width: double.infinity,
             color: AppColors.primaryColor,
-            child: Center(child: Text("News App", style: AppTextStyles.b700)),
+            child: Center(child: Text("newsApp".tr(), style: AppTextStyles.b700)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16, left: 16),
@@ -40,7 +43,7 @@ class AppDrawer extends StatelessWidget {
                     color: AppColors.primaryColor,
                   ),
                   SizedBox(width: 8),
-                  Text("Go To Home", style: AppTextStyles.b700Drawer),
+                  Text("goToHome".tr(), style: AppTextStyles.b700Drawer),
                 ],
               ),
             ),
@@ -60,17 +63,18 @@ class AppDrawer extends StatelessWidget {
             child: Column(
               children: [
                 IconDrawer(
-                  title: "Theme",
+                  title: "theme".tr(),
                   imageIcon: AppImages.themeIcon,
-                  subTitle: "Dark",
+                  subTitle: "dark".tr(),
                   function: () {
                     showModalBottomSheet(
                       isDismissible: true,
                       context: context,
                       builder: (context) =>
                           DrawerBottomSheet(
-                            title1: "Light",
-                            title2: "Dark",
+                            title1: "light".tr(),
+                            title2: "dark".tr(),
+
                           ),
                     );
                   },
@@ -86,17 +90,18 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
                 IconDrawer(
-                  title: "Language",
+                  title: "language".tr(),
                   imageIcon: AppImages.language_icon,
-                  subTitle: "English",
+                  subTitle: "english".tr(),
                   function: () {
                     showModalBottomSheet(
                       isDismissible: true,
                       context: context,
                       builder: (context) =>
                           DrawerBottomSheet(
-                            title1: "English",
-                            title2: "Arabic",
+                            title1: "english".tr(),
+                            title2: "arabic".tr(),
+
                           ),
                     );
                   },

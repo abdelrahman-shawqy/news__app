@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/themes/app_Colors.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         drawer: AppDrawer(),
-        appBar: AppBarr(title: "Home"),
+        appBar: AppBarr(title: "home".tr()),
         body: Container(
           color: Theme.of(context).colorScheme.primary,
           width: double.infinity,
@@ -23,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Good Morning \nHere is Some News For You",
+                  "goodMorning".tr(),
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
