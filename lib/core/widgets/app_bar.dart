@@ -10,20 +10,20 @@ final String title;
   Widget build(BuildContext context) {
     return AppBar(
         toolbarHeight: 72,
-        backgroundColor: AppColors.primaryColorDark,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       centerTitle: true,
       leading: Padding(
         padding: const EdgeInsets.only(left: 24),
         child: IconButton(onPressed: (){
           Scaffold.of(context).openDrawer();
-        }, icon: Icon(Icons.menu,size: 24,weight: 24,color: AppColors.primaryColor,))
+        }, icon: Icon(Icons.menu,size: 24,weight: 24,color: Theme.of(context).colorScheme.onPrimary,))
       ),
-        title: Text(title,style: AppTextStyles.mBarDark),
+        title: Text(title,style: Theme.of(context).textTheme.displayLarge),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24),
             child: IconButton(onPressed: (){},
-                icon: Icon(Icons.search,size: 24,weight: 24,color: AppColors.primaryColor,)),
+                icon: Icon(Icons.search,size: 24,weight: 24,color: Theme.of(context).colorScheme.onPrimary,)),
           )],
       );
 

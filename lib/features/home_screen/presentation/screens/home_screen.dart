@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         drawer: AppDrawer(),
         appBar: AppBarr(title: "Home"),
         body: Container(
-          color: AppColors.primaryColorDark,
+          color: Theme.of(context).colorScheme.primary,
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.all(15),
@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Text(
                   "Good Morning \nHere is Some News For You",
-                  style: AppTextStyles.m500Dark,
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
               ],
             ),
