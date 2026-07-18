@@ -1,14 +1,15 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_appp/core/constants/app_images.dart';
 import 'package:news_appp/core/themes/app_Colors.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/widgets/drawer/theme_drawer_bottom_sheet.dart';
+import 'package:news_appp/core/widgets/drawer/theme_icon_drawer.dart';
 
 import '../../localization/app_localization.dart';
 import '../../routing/routes.dart';
-import 'localization_drawer_bottom_sheet.dart';
-import 'icon_drawer.dart';
+import 'local_icon_drawer.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -63,22 +64,12 @@ class AppDrawer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                IconDrawer(
+                ThemeIconDrawer(
                   title: "theme".tr(),
                   imageIcon: AppImages.themeIcon,
                   subTitle: "dark".tr(),
-                  function: () {
-                    showModalBottomSheet(
-                      isDismissible: true,
-                      context: context,
-                      builder: (context) =>
-                          ThemeDrawerBottomSheet(
-                            title1: "light".tr(),
-                            title2: "dark".tr(),
+                  items: ["Dark".tr(),"Light".tr()],
 
-                          ),
-                    );
-                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24),
@@ -90,23 +81,12 @@ class AppDrawer extends StatelessWidget {
                     color: AppColors.primaryColor,
                   ),
                 ),
-                IconDrawer(
+                LocalIconDrawer(
                   title: "language".tr(),
                   imageIcon: AppImages.language_icon,
-                  subTitle: "english".tr(),
-                  function: () {
-                    showModalBottomSheet(
-                      isDismissible: true,
-                      context: context,
-                      builder: (context) =>
-                          LocalizationDrawerBottomSheet(
-                            title1: "english".tr(),
-                            title2: "arabic".tr(),
-
-                          ),
-                    );
-                  },
+                  items: ["English","العربية"],
                 ),
+
               ],
             ),
           ),
@@ -114,4 +94,5 @@ class AppDrawer extends StatelessWidget {
       ),
     );
   }
+
 }
