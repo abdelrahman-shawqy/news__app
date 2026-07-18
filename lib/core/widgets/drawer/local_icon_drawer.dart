@@ -55,7 +55,6 @@ class LocalIconDrawer extends StatelessWidget {
                     icon: ImageIcon(AssetImage(AppImages.arrow_down_icon),color:AppColors.primaryColor ,)
                 ),
                 hint: Text(
-                  // TODO : this subtitle must be inhance
                     changeSubTitle(context),
                     style: AppTextStyles.b700Drawer
                 ),
@@ -99,6 +98,7 @@ class LocalIconDrawer extends StatelessWidget {
                   dropdownSeparator:DropdownSeparator(
                     height: 10,
                       child: Divider(
+                        color: Colors.white30,
                       ))
 
               ),
