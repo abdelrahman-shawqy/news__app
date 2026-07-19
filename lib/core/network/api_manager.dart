@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../models/news_data_response.dart';
 import '../models/sources_response.dart';
 import 'constants.dart';
@@ -24,7 +23,7 @@ class ApiManager {
       return sourcesResponse ;
     }
     catch(e){
-      print("Somthing went wrong ");
+      print("Something went wrong ");
     }
   }
 }
