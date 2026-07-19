@@ -68,7 +68,7 @@ class AppDrawer extends StatelessWidget {
                   title: "theme".tr(),
                   imageIcon: AppImages.themeIcon,
                   subTitle: "dark".tr(),
-                  items: ["Dark".tr(),"Light".tr()],
+                  items: ["dark".tr(),"light".tr()],
 
                 ),
                 Padding(
