@@ -1,29 +1,55 @@
 import 'package:dio/dio.dart';
-import '../models/news_data_response.dart';
-import '../models/sources_response.dart';
-import 'constants.dart';
+import 'package:injectable/injectable.dart';
 
+import 'constants.dart';
+@lazySingleton
 class ApiManager {
-  static final Dio dio=Dio();
-  static Future<NewsDataResponse?> getData(String sourceId)async{
+  Dio _dio =Dio();
+  ApiManager(){
+    _dio.options=BaseOptions(
+      baseUrl: BASEURL,
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
+      headers: {'Content-Type' : 'application/json',
+      "x-api-key":APIKEY
+      },
+    );
+  }
+  Future<Response> get<T>({
+    required String endpoint,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers ,
+  }) async {
     try{
-      Response response = await dio.get("$BASEURL/v2/everything?apiKey=$APIKEY&sources=$sourceId");
-      NewsDataResponse newsDataResponse = NewsDataResponse.fromJson(response.data);
-      return newsDataResponse ;
+      final response = await _dio.get(
+        endpoint,
+        queryParameters: queryParameters,
+        options: headers!=null?Options(headers: headers):null,
+      );
+      return response ;
     }catch(e){
-      print("Something went wrong");
+      throw "$e";
     }
   }
 
+  Future<Response> post<T>({
+    required String endpoint,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers ,
 
-  static Future<SourcesResponse?>getSources(String catId)async{
-    try{
-      Response response = await dio.get("$BASEURL/v2/top-headlines/sources?apiKey=$APIKEY&category=$catId");
-      SourcesResponse sourcesResponse=SourcesResponse.fromJson(response.data);
-      return sourcesResponse ;
-    }
-    catch(e){
-      print("Something went wrong ");
-    }
+  }) async {
+   try{
+     final response = await _dio.post(
+       endpoint,
+       data: data,
+       queryParameters: queryParameters,
+       options: headers!=null?Options(headers: headers):null,
+     );
+     return response ;
+   }
+   catch(e){
+     throw "$e";
+   }
   }
 }

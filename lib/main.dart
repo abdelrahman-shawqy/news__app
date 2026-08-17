@@ -1,8 +1,25 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
+import 'core/models/news_data_adapter.dart';
+import 'core/models/source_responce_adapter.dart';
+import 'core/network/internet_checker.dart';
+import 'di.dart';
+import 'fetures/bloc/observer.dart';
 import 'fetures/home_screen/screens/home_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+  configureDependencies();
+  print(await getIt<InternetConnectionss>().isConnected);
+  Hive.initFlutter();
+  Hive.registerAdapter(SourcesResponseAdapter());
+  Hive.registerAdapter(SourcesAdapter());
+  Hive.registerAdapter(NewsDataResponseAdapter());
+  Hive.registerAdapter(ArticlesAdapter());
   runApp(const MyApp());
 }
 

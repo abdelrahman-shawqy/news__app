@@ -12,3 +12,6 @@ class GetSourcesErrorState extends HomeStates{}
 class GetNewsDataLoadingState extends HomeStates{}
 class GetNewsDataSuccessState extends HomeStates{}
 class GetNewsDataErrorState extends HomeStates{}
+
+class ChangeSelectedSource extends HomeStates{}
+
