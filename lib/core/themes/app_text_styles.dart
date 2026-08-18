@@ -34,6 +34,11 @@ static TextStyle b700Drawer=GoogleFonts.inter(
   fontSize: 20,
   color: AppColors.primaryColor,
 );
+static TextStyle b700LabelCategoryDark=GoogleFonts.inter(
+  fontWeight: FontWeight.w500,
+  fontSize: 40,
+  color: AppColors.primaryColorDark,
+);
 
 
   }

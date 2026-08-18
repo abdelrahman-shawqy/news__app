@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.DarkTheme,
       themeMode: ThemeMode.dark,
 
-      initialRoute: Routes.splash,
+      initialRoute: Routes.homeScreen,
       onGenerateRoute: AppRouter.onGenerateRoute,
 
       localizationsDelegates: context.localizationDelegates,

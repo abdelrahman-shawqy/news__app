@@ -8,5 +8,13 @@
   "dark": "داكن",
   "language": "اللغة",
   "english": "الإنجليزية",
-  "arabic": "العربية"
+  "arabic": "العربية",
+  "general": "عام",
+  "entertainment": "ترفيه",
+  "health": "صحة",
+  "science": "علوم",
+  "technology": "تكنولوجيا",
+  "sport": "رياضة",
+  "business": "عمل",
+  "viewAll": "عرض الكل"
 }
