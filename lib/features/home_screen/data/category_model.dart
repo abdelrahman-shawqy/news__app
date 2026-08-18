@@ -10,37 +10,37 @@ class CategoryModel {
   static List<CategoryModel>categoryModel=[
     CategoryModel(
       id: "general",
-      label: "general".tr(),
+      label: "general",
       image: AppImages.generalDark
     ),
     CategoryModel(
       id: "business",
-      label: "business".tr(),
+      label: "business",
       image: AppImages.busniessDark
     ),
     CategoryModel(
         id: "sport",
-        label: "sport".tr(),
+        label: "sport",
         image: AppImages.sportDark
     ),
     CategoryModel(
         id: "technology",
-        label: "technology".tr(),
+        label: "technology",
         image: AppImages.technologyDark
     ),
     CategoryModel(
         id: "science",
-        label: "science".tr(),
+        label: "science",
         image: AppImages.scienceDark
     ),
     CategoryModel(
         id: "health",
-        label: "health".tr(),
+        label: "health",
         image: AppImages.healthDark
     ),
     CategoryModel(
         id: "entertainment",
-        label: "entertainment".tr(),
+        label: "entertainment",
         image: AppImages.entertainmentDark
     ),
   ];
