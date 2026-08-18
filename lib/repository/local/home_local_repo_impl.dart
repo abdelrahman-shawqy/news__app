@@ -9,13 +9,13 @@ import 'home_local_repo.dart';
 class HomeLocalRepoImpl implements HomeLocalRepo {
   @override
   Future<List<Articles>> getNewsData(String sourcesId) async{
-   var data = await  CacheHelper.getNews();
+   var data = await  CacheHelper.getNews(sourcesId);
    return data?.articles??[];
   }
 
   @override
   Future<List<Sources>> getSources(String catId) async{
-    var data = await  CacheHelper.getSources();
+    var data = await  CacheHelper.getSources(catId);
     return data?.sources??[];
   }
 

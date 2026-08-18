@@ -10,16 +10,21 @@ import 'di.dart';
 import 'fetures/bloc/observer.dart';
 import 'fetures/home_screen/screens/home_screen.dart';
 
-void main() async{
+void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
   Bloc.observer = MyBlocObserver();
+
   configureDependencies();
   print(await getIt<InternetConnectionss>().isConnected);
-  Hive.initFlutter();
+
+  await Hive.initFlutter();
   Hive.registerAdapter(SourcesResponseAdapter());
   Hive.registerAdapter(SourcesAdapter());
   Hive.registerAdapter(NewsDataResponseAdapter());
   Hive.registerAdapter(ArticlesAdapter());
+
   runApp(const MyApp());
 }
 
@@ -31,10 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: HomeScreen.routName,
-      routes: {
-        HomeScreen.routName:(context)=>HomeScreen(),
-      },
+      routes: {HomeScreen.routName: (context) => HomeScreen()},
     );
   }
 }
-

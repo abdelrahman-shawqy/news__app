@@ -22,7 +22,7 @@ class HomeRemoteRepoImpl implements HomeRemoteRepo{
       NewsDataResponse newsDataResponse = NewsDataResponse.fromJson(
         response.data,
       );
-      await CacheHelper.saveNews(newsDataResponse);
+      await CacheHelper.saveNews(newsDataResponse,sourceId);
 
       return newsDataResponse.articles??[] ;
     }catch(e){
@@ -38,7 +38,7 @@ class HomeRemoteRepoImpl implements HomeRemoteRepo{
         queryParameters: {"category":catId},
       );
       SourcesResponse sourcesResponse = SourcesResponse.fromJson(response.data);
-      await CacheHelper.saveSources(sourcesResponse);
+      await CacheHelper.saveSources(sourcesResponse,catId);
       return sourcesResponse.sources??[] ;
     }
     catch(e){

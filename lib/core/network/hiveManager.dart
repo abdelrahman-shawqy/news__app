@@ -12,17 +12,17 @@ static Future<Box<SourcesResponse>>_openSourcesBox()async{
   }
  return Hive.box<SourcesResponse>(_sourcesBoxName);
 }
-static Future<void> saveSources(SourcesResponse sourcesResponse)async{
+static Future<void> saveSources(SourcesResponse sourcesResponse,String catId)async{
   var box = await _openSourcesBox();
-  box.put("Sources", sourcesResponse);
+  await box.put("sources-$catId", sourcesResponse);
 }
-static Future<SourcesResponse?> getSources( )async{
+static Future<SourcesResponse?> getSources(String catId )async{
   var box= await _openSourcesBox();
-  box.get("Sources");
+  return box.get("sources-$catId");
 }
-static Future<void>deleteSources( )async{
+static Future<void>deleteSources( String catId)async{
   var box= await _openSourcesBox();
-  box.delete("Sources");
+  return box.delete("sources-$catId");
 }
 
 /////////////////////////
@@ -33,16 +33,16 @@ static Future<void>deleteSources( )async{
     }
     return Hive.box<NewsDataResponse>(_newsBoxName);
   }
-  static Future<void> saveNews(NewsDataResponse newsDataResponse)async{
+  static Future<void> saveNews(NewsDataResponse newsDataResponse,String sourceId)async{
     var box = await _openNewsBox();
-    box.put("News", newsDataResponse);
+    await box.put("news-$sourceId", newsDataResponse);
   }
-  static Future<NewsDataResponse?> getNews()async{
+  static Future<NewsDataResponse?> getNews(String sourceId)async{
     var box= await _openNewsBox();
-    box.get("News");
+    return box.get("news-$sourceId");
   }
-  static Future<void>deleteNews(String sourcesId)async{
+  static Future<void>deleteNews(String sourceId)async{
     var box= await _openNewsBox();
-    box.delete("News");
+    return box.delete("news-$sourceId");
   }
 }
