@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_appp/core/constants/app_images.dart';
-import 'package:news_appp/features/home_screen/widgets/home_category.dart';
+import 'package:news_appp/features/home_screen/presentation/widgets/home_category.dart';
 
 import '../../../../core/themes/app_Colors.dart';
 import '../../../../core/themes/app_text_styles.dart';

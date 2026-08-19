@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:news_appp/core/constants/app_images.dart';
 import 'package:news_appp/core/themes/app_Colors.dart';
+import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/features/home_screen/data/category_model.dart';
-import '../../../core/constants/app_images.dart';
-import '../../../core/themes/app_text_styles.dart';
 
 class HomeCategory extends StatelessWidget {
   HomeCategory({super.key});
