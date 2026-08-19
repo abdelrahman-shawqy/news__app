@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_appp/core/widgets/app_drawer.dart';
 import 'package:news_appp/fetures/home_screen/screens/views/categories_view.dart';
 import 'package:news_appp/fetures/home_screen/screens/views/resources_view.dart';
 
@@ -20,22 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: InkWell(
-          onTap: (){
-            selectedCategorie=null;
-            Navigator.pop(context);
-            setState(() {
-
-            });
-          },
-          child: Container(
-            height: 100,
-            width: 100,
-            color: Colors.blue,
-          ),
-        ),
-      ),
+      drawer: AppDrawer(onDrawerClicked:onDrawerClicked ,),
       appBar: AppBar(
         toolbarHeight: 72,
         backgroundColor: Colors.white,
@@ -73,6 +59,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   onCategoriesClick(CategorisModel categorie) {
     selectedCategorie = categorie;
+    setState(() {
+
+    });
+  }
+  onDrawerClicked(){
+    selectedCategorie=null;
+    Navigator.pop(context);
     setState(() {
 
     });
