@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_appp/core/theming/bloc/cubit.dart';
 
 import '../../../../core/models/categoris_model.dart';
 
@@ -56,7 +57,7 @@ class CategoriesView extends StatelessWidget {
                             style: GoogleFonts.inter(
                               fontSize: 30,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white,
+                              color: ThemeCubit.get(context).colors.socendry,
                             ),
                           ),
                           SizedBox(height: 55),
@@ -88,7 +89,7 @@ class CategoriesView extends StatelessWidget {
                                     style: GoogleFonts.inter(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.black,
+                                      color: ThemeCubit.get(context).colors.primary,
                                     ),
                                   ),
                                 ),

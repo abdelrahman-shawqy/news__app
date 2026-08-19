@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_appp/core/theming/bloc/cubit.dart';
 import 'package:news_appp/core/widgets/app_drawer.dart';
 import 'package:news_appp/fetures/home_screen/screens/views/categories_view.dart';
 import 'package:news_appp/fetures/home_screen/screens/views/resources_view.dart';
@@ -24,14 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: AppDrawer(onDrawerClicked:onDrawerClicked ,),
       appBar: AppBar(
         toolbarHeight: 72,
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeCubit.get(context).colors.socendry,
         centerTitle: true,
         title: Text(
           "Home",
           style: GoogleFonts.inter(
             fontSize: 24,
             fontWeight: FontWeight.w500,
-            color: Colors.black,
+            color: ThemeCubit.get(context).colors.primary,
           ),
         ),
         actions: [
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icons.search,
                 size: 24,
                 weight: 24,
-                color: Colors.black,
+                color: ThemeCubit.get(context).colors.primary,
               ),
             ),
           ),
