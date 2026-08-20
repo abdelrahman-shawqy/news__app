@@ -1,11 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_appp/core/bloc/blocObserver.dart';
 import 'core/localization/app_localization.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/themes/app_Theme.dart';
+import 'core/themes/bloc/cubit.dart';
+import 'core/themes/bloc/states.dart';
 
 void main() async{
+  Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp( EasyLocalization(
@@ -13,7 +18,10 @@ void main() async{
       fallbackLocale: AppLocalization.fallbackLocale,
       startLocale: AppLocalization.startLocal,
       path: AppLocalization.path,
-      child: MyApp()));
+      child: BlocProvider(
+          create:(context)=>ThemeCubit() ,
+          child:BlocBuilder<ThemeCubit,ThemeStates>(
+            builder:(context, state) => MyApp()))));
 }
 
 class MyApp extends StatelessWidget {
