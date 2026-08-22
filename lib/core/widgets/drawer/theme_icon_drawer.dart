@@ -1,10 +1,13 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_appp/core/themes/bloc/cubit.dart';
 
 import '../../constants/app_images.dart';
 import '../../themes/app_Colors.dart';
 import '../../themes/app_text_styles.dart';
+import '../../themes/bloc/states.dart';
 
 class ThemeIconDrawer extends StatelessWidget {
   ThemeIconDrawer({
@@ -26,6 +29,11 @@ class ThemeIconDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = context.watch<ThemeCubit>().state.color;
+    final styleColor =AppTextStyles(color: color);
+
+    return BlocBuilder<ThemeCubit, ThemeStates>(
+  builder: (context, state) {
     return Column(
       children: [
         Row(
@@ -33,10 +41,10 @@ class ThemeIconDrawer extends StatelessWidget {
             ImageIcon(
               AssetImage(imageIcon),
               size: 24,
-              color: AppColors.primaryColor,
+              color: color.secondary,
             ),
             SizedBox(width: 8),
-            Text(title, style: AppTextStyles.b700Drawer),
+            Text(title, style: styleColor.b700DrawerTest),
           ],
         ),
         SizedBox(height: 10),
@@ -46,7 +54,7 @@ class ThemeIconDrawer extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(width: 1, color: AppColors.primaryColor),
+            border: Border.all(width: 1, color: color.secondary),
           ),
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -54,12 +62,12 @@ class ThemeIconDrawer extends StatelessWidget {
                 child: DropdownButton2<String>(
                     isExpanded: true,
                     iconStyleData: IconStyleData(
-                        icon: ImageIcon(AssetImage(AppImages.arrow_down_icon),color:AppColors.primaryColor ,)
+                        icon: ImageIcon(AssetImage(AppImages.arrow_down_icon),color:color.secondary,)
                     ),
                     hint: Text(
                       // TODO : this subtitle must be light or what the app will start
                         subTitle,
-                        style: AppTextStyles.b700Drawer
+                        style:  styleColor.b700DrawerTest
                     ),
 
                     items: items
@@ -69,7 +77,7 @@ class ThemeIconDrawer extends StatelessWidget {
                         height: 40,
                         child: Text(
                             item,
-                            style:  AppTextStyles.b700Drawer
+                            style:  styleColor.b700DrawerTest
                         ),
                       ),
                     )
@@ -78,7 +86,7 @@ class ThemeIconDrawer extends StatelessWidget {
                     valueListenable: valueListenable,
                     onChanged: (String? value) {
                       valueListenable.value = value;
-                    },
+                      context.read<ThemeCubit>().changeTheme();                     },
 
                     buttonStyleData: const ButtonStyleData(
                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -91,15 +99,15 @@ class ThemeIconDrawer extends StatelessWidget {
                       width: 280,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        border:Border.all(width:1,color: Colors.white30),
-                        color: AppColors.primaryColorDark,
+                        border:Border.all(width:1,color: color.secondary),
+                        color: color.primary,
                       ),
                     ),
 
                     dropdownSeparator:DropdownSeparator(
                         height: 10,
                         child: Divider(
-                          color: Colors.white30,
+                          color: color.secondary,
                         ))
 
                 ),
@@ -110,6 +118,8 @@ class ThemeIconDrawer extends StatelessWidget {
 
       ],
     );
+  },
+);
   }
 
 }

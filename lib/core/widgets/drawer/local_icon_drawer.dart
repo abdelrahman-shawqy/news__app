@@ -1,10 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constants/app_images.dart';
 import '../../themes/app_Colors.dart';
 import '../../themes/app_text_styles.dart';
+import '../../themes/bloc/cubit.dart';
 
 class LocalIconDrawer extends StatelessWidget {
   LocalIconDrawer({
@@ -24,6 +26,8 @@ class LocalIconDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color= context.watch<ThemeCubit>().state.color;
+    final styleColor = AppTextStyles(color: color);
     return Column(
       children: [
         Row(
@@ -31,10 +35,10 @@ class LocalIconDrawer extends StatelessWidget {
             ImageIcon(
               AssetImage(imageIcon),
               size: 24,
-              color: AppColors.primaryColor,
+              color: color.secondary,
             ),
             SizedBox(width: 8),
-            Text(title, style: AppTextStyles.b700Drawer),
+            Text(title, style: styleColor.b700DrawerTest),
           ],
         ),
         SizedBox(height: 10),
@@ -44,7 +48,7 @@ class LocalIconDrawer extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(width: 1, color: AppColors.primaryColor),
+            border: Border.all(width: 1, color: color.secondary),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -52,11 +56,11 @@ class LocalIconDrawer extends StatelessWidget {
               child: DropdownButton2<String>(
                 isExpanded: true,
                 iconStyleData: IconStyleData(
-                    icon: ImageIcon(AssetImage(AppImages.arrow_down_icon),color:AppColors.primaryColor ,)
+                    icon: ImageIcon(AssetImage(AppImages.arrow_down_icon),color:color.secondary,)
                 ),
                 hint: Text(
                     changeSubTitle(context),
-                    style: AppTextStyles.b700Drawer
+                    style: styleColor.b700DrawerTest
                 ),
 
                 items: items
@@ -66,7 +70,7 @@ class LocalIconDrawer extends StatelessWidget {
                     height: 40,
                     child: Text(
                         item,
-                        style:  AppTextStyles.b700Drawer
+                        style:  styleColor.b700DrawerTest
                     ),
                   ),
                 )
@@ -90,15 +94,15 @@ class LocalIconDrawer extends StatelessWidget {
                     width: 280,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(14),
-                      border:Border.all(width:1,color: Colors.white30),
-                      color: AppColors.primaryColorDark,
+                      border:Border.all(width:1,color:color.secondary),
+                      color: color.primary,
                     ),
                   ),
 
                   dropdownSeparator:DropdownSeparator(
                     height: 10,
                       child: Divider(
-                        color: Colors.white30,
+                        color: color.secondary,
                       ))
 
               ),

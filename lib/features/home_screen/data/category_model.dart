@@ -2,46 +2,63 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:news_appp/core/constants/app_images.dart';
 
 class CategoryModel {
-  String id ;
-  String label ;
-  String image ;
-  CategoryModel({required this.id,required this.label,required this.image});
+  String id;
 
-  static List<CategoryModel>categoryModel=[
+  String label;
+
+  String imageDark;
+
+  String image;
+
+  CategoryModel({
+    required this.id,
+    required this.label,
+    required this.imageDark,
+    required this.image,
+  });
+
+  static List<CategoryModel> categoryModel = [
     CategoryModel(
       id: "general",
       label: "general",
-      image: AppImages.generalDark
+      imageDark: AppImages.generalDark,
+      image: AppImages.general,
     ),
     CategoryModel(
       id: "business",
       label: "business",
-      image: AppImages.busniessDark
+      imageDark: AppImages.busniessDark,
+      image: AppImages.business,
     ),
     CategoryModel(
-        id: "sport",
-        label: "sport",
-        image: AppImages.sportDark
+      id: "sport",
+      label: "sport",
+      imageDark: AppImages.sportDark,
+      image: AppImages.sports,
     ),
     CategoryModel(
-        id: "technology",
-        label: "technology",
-        image: AppImages.technologyDark
+      id: "technology",
+      label: "technology",
+      imageDark: AppImages.technologyDark,
+      image: AppImages.technology,
     ),
     CategoryModel(
-        id: "science",
-        label: "science",
-        image: AppImages.scienceDark
+      id: "science",
+      label: "science",
+      imageDark: AppImages.scienceDark,
+      image: AppImages.science,
     ),
     CategoryModel(
-        id: "health",
-        label: "health",
-        image: AppImages.healthDark
+      id: "health",
+      label: "health",
+      imageDark: AppImages.healthDark,
+      image: AppImages.health,
     ),
     CategoryModel(
-        id: "entertainment",
-        label: "entertainment",
-        image: AppImages.entertainmentDark
+      id: "entertainment",
+      label: "entertainment",
+      imageDark: AppImages.entertainmentDark,
+      image: AppImages.entertainment,
     ),
   ];
 }

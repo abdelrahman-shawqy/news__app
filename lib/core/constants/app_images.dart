@@ -23,5 +23,7 @@ class AppImages {
   static const String  entertainmentDark= "assets/images/entertainmentDark.png";
   static const String  arrow_left_dark= "assets/images/arrow_left_dark.png";
   static const String  arrow_right_dark= "assets/images/arrow_right_dark.png";
+  static const String  arrow_left= "assets/images/arrow_left.png";
+  static const String  arrow_right= "assets/images/arrow_right.png";
 
 }
