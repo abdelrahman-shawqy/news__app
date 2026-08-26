@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+class CustomSearchBar extends StatelessWidget {
+  const CustomSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +19,12 @@ class SearchBar extends StatelessWidget {
       style: colorStyle.sourcesUnSelectedLableStyleB500,
       decoration: InputDecoration(
 
-        hint:Text('Search',style:colorStyle.mBarTest),
+        hintText:'search'.tr(),
+        hintStyle:colorStyle.mBarTest ,
         prefixIcon:Icon(Icons.search,color: color.secondary,),
         suffixIcon: IconButton(onPressed: (){
           Navigator.pop(context);
         }, icon: Icon(Icons.close,color: color.secondary,)),
-
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-              color: Colors.red,
-              width: 5
-          ),
-        ),
 
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),

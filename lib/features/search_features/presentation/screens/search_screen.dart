@@ -5,6 +5,7 @@ import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
 import 'package:news_appp/features/news_screen/data/articles_model.dart';
 import 'package:news_appp/features/news_screen/presentation/widgets/news_component.dart';
+import 'package:news_appp/features/search_features/presentation/widgets/search_bar.dart';
 
 class SearchScreen extends StatelessWidget {
    SearchScreen({super.key});
@@ -19,7 +20,7 @@ class SearchScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              SearchBar(),
+              CustomSearchBar(),
               SizedBox(height: 16,),
               NewsComponent(),
 
