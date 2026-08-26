@@ -3,10 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_appp/core/constants/app_images.dart';
-import 'package:news_appp/core/themes/app_Colors.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
-import 'package:news_appp/core/widgets/drawer/theme_drawer_bottom_sheet.dart';
 import 'package:news_appp/core/widgets/drawer/theme_icon_drawer.dart';
 
 import '../../localization/app_localization.dart';

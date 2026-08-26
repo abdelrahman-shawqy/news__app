@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_appp/core/routing/routes.dart';
 import 'package:news_appp/features/home_screen/presentation/screens/home_screen.dart';
 
+import '../../features/news_screen/presentation/screens/news_screen.dart';
 import '../../features/splash_screen/presentation/screen/splash_screen.dart';
 
 
@@ -18,6 +19,11 @@ class AppRouter {
       case Routes.homeScreen :
         return MaterialPageRoute(
           builder: (_)=>const HomeScreen(),);
+
+      case Routes.newsScreen :
+        final categoryLable = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_)=> NewsScreen(categoryLable:categoryLable ,),);
 
 
 

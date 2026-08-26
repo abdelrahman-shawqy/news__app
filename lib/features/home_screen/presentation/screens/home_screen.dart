@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_appp/core/constants/app_images.dart';
+import 'package:news_appp/core/routing/routes.dart';
 import 'package:news_appp/features/home_screen/presentation/widgets/home_category.dart';
 
-import '../../../../core/themes/app_Colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 import '../../../../core/themes/bloc/cubit.dart';
 import '../../../../core/themes/bloc/states.dart';
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         drawer: AppDrawer(),
-        appBar: AppBarr(title: "home"),
+        appBar: AppBarr(title: "home".tr()),
         body: Container(
           color: color.primary,
           width: double.infinity,

@@ -5,7 +5,6 @@ import 'core/bloc/observer.dart';
 import 'core/localization/app_localization.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
-import 'core/themes/app_Theme.dart';
 import 'core/themes/bloc/cubit.dart';
 import 'core/themes/bloc/states.dart';
 
@@ -36,11 +35,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      //theme: AppTheme.LightTheme,
-      //darkTheme: AppTheme.DarkTheme,
-      //themeMode: ThemeMode.dark,
-
       initialRoute: Routes.homeScreen,
       onGenerateRoute: AppRouter.onGenerateRoute,
 
