@@ -7,11 +7,12 @@ import 'package:news_appp/core/widgets/app_bar.dart';
 import 'package:news_appp/core/widgets/drawer/app_drawer.dart';
 import 'package:news_appp/features/news_screen/data/articles_model.dart';
 
+import '../widgets/news_component.dart';
+
 class NewsScreen extends StatelessWidget {
   NewsScreen({super.key, required this.categoryLable});
 
   final String categoryLable;
-
   List<String> sources = [
     "ABC News",
     "mbc",
@@ -31,7 +32,6 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = context.watch<ThemeCubit>().state.color;
     final colorStyle = AppTextStyles(color: color);
-    var articles = ArticlesModel.articlesGet;
     return Scaffold(
       backgroundColor: color.primary,
       appBar: AppBarr(title: categoryLable.tr()),
@@ -54,49 +54,7 @@ class NewsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, index) => Container(
-                  height: 322,
-                  width: double.infinity,
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: color.secondary, width: 1),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadiusGeometry.circular(8),
-                        child: Image.asset(
-                          articles[index].urlToImage,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: 220,
-                        ),
-                      ),
-                      SizedBox(height: 10,),
-                      Text(
-                        articles[index].description,
-                        style: colorStyle.sourcesSelectedLableStyleB700,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                      SizedBox(height: 10,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("By ${articles[index].author}",style: colorStyle.m500_12,),
-                          Text(articles[index].publishedAt,style: colorStyle.m500_12,),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                separatorBuilder: (context, index) => SizedBox(height: 16),
-                itemCount: articles.length,
-              ),
-            ),
+            NewsComponent(),
           ],
         ),
       ),
