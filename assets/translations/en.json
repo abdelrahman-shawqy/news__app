@@ -8,5 +8,14 @@
   "dark": "Dark",
   "language": "Language",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "general": "General",
+  "entertainment": "Entertainment",
+  "health": "Health",
+  "science": "Science",
+  "technology": "Technology",
+  "sport": "Sport",
+  "business": "Business",
+  "viewAll": "View All",
+  "search": "Search"
 }
