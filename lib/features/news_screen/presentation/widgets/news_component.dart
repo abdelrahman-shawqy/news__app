@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
-import 'package:news_appp/features/news_screen/data/articles_model.dart';
+import 'package:news_appp/features/news_screen/data/models/ar_model.dart';
 
 class NewsComponent extends StatelessWidget {
    NewsComponent({super.key});
