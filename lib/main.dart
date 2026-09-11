@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/bloc/observer.dart';
+import 'core/dependency _njection/di.dart';
 import 'core/localization/app_localization.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -10,7 +11,9 @@ import 'core/themes/bloc/states.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
+  configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
+
   await EasyLocalization.ensureInitialized();
 
   runApp(EasyLocalization(

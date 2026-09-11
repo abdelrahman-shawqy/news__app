@@ -31,7 +31,7 @@ class CategoryModel {
       image: AppImages.business,
     ),
     CategoryModel(
-      id: "sport",
+      id: "sports",
       label: "sport",
       imageDark: AppImages.sportDark,
       image: AppImages.sports,
