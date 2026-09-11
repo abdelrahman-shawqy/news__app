@@ -10,8 +10,8 @@ import 'package:news_appp/features/news_screen/domain/repository/repository_arti
 import 'package:news_appp/features/news_screen/domain/repository/repository_sources/remot_sources_repository.dart';
 import 'package:news_appp/features/news_screen/domain/use_case/get_articles_use_case.dart';
 import 'package:news_appp/features/news_screen/domain/use_case/get_sources_use_case.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/articles/articles_cubit.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/sources/sources_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/articles/articles_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/sources/sources_cubit.dart';
 
 import '../network/api_helper.dart';
 final getIt=GetIt.instance;

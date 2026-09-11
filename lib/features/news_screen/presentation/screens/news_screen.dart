@@ -5,8 +5,8 @@ import 'package:news_appp/core/dependency%20_njection/di.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
 import 'package:news_appp/core/widgets/app_bar.dart';
 import 'package:news_appp/core/widgets/drawer/app_drawer.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/articles/articles_cubit.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/sources/sources_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/articles/articles_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/sources/sources_cubit.dart';
 import 'package:news_appp/features/news_screen/presentation/widgets/sources_tap.dart';
 import '../widgets/news_component.dart';
 

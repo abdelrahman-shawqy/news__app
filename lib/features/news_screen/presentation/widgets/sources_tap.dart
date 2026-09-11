@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_appp/core/dependency%20_njection/di.dart';
 import 'package:news_appp/core/themes/app_text_styles.dart';
 import 'package:news_appp/core/themes/bloc/cubit.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/articles/articles_cubit.dart';
-import 'package:news_appp/features/news_screen/presentation/controller/sources/sources_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/articles/articles_cubit.dart';
+import 'package:news_appp/features/news_screen/presentation/controllers/sources/sources_cubit.dart';
 
 class SourcesTap extends StatelessWidget {
   SourcesTap({super.key, required this.categoryLable,});
