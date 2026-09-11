@@ -22,7 +22,7 @@ class SearchScreen extends StatelessWidget {
             children: [
               CustomSearchBar(),
               SizedBox(height: 16,),
-              NewsComponent(),
+              NewsComponent(sourceId: "aftenposten",),
 
 
             ],

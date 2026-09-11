@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:news_appp/features/news_screen/data/models/Sources_response_model.dart';
-import 'package:news_appp/features/news_screen/domain/use_case/GetSourcesUseCase.dart';
+import 'package:news_appp/features/news_screen/domain/use_case/get_sources_use_case.dart';
 
 part 'sources_state.dart';
 

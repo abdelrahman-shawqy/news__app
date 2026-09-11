@@ -6,10 +6,10 @@ import 'package:news_appp/core/themes/bloc/cubit.dart';
 import 'package:news_appp/features/news_screen/presentation/controller/sources/sources_cubit.dart';
 
 class SourcesTap extends StatelessWidget {
-  SourcesTap({super.key, required this.categoryLable});
+  SourcesTap({super.key, required this.categoryLable,required this.changeSelectedSource});
 
   final String categoryLable;
-
+  final void Function(String) changeSelectedSource ;
   @override
   Widget build(BuildContext context) {
     final color = context.watch<ThemeCubit>().state.color;
@@ -23,7 +23,6 @@ class SourcesTap extends StatelessWidget {
           } else if (state is SourcesSuccess) {
             return DefaultTabController(
               length: state.sources.length,
-
               child: TabBar(
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,
@@ -35,6 +34,10 @@ class SourcesTap extends StatelessWidget {
                 tabs: state.sources
                     .map((e) => Tab(child: Text(e.name)))
                     .toList(),
+                onTap: (name){
+                  changeSelectedSource(state.sources[name].id);
+                  print("the tap  ########## =========${state.sources[name].id}");
+                },
               ),
             );
           } else if (state is SourcesError) {
