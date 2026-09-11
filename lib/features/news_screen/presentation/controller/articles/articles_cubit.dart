@@ -18,4 +18,19 @@ class ArticlesCubit extends Cubit<ArticlesState> {
       emit(ArticlesSuccess(success.articles));
     });
   }
+
+  String getAuthor(String? author) {
+    if (author == null || author.isEmpty) {
+      return "Unknown";
+    }
+
+    if (author.startsWith("http")) {
+      return "Unknown";
+    }
+
+    return author.trim().split(" ").take(2).join(" ");
+  }
+
+
+
 }

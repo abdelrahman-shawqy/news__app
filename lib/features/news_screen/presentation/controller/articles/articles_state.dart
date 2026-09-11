@@ -1,7 +1,7 @@
 part of 'articles_cubit.dart';
 
 @immutable
-sealed class ArticlesState extends Equatable{}
+abstract class ArticlesState extends Equatable{}
 
 final class ArticlesLoading extends ArticlesState {
   @override
@@ -17,7 +17,6 @@ final class ArticlesSuccess extends ArticlesState {
   List<Object?> get props => [articles];
 
 }
-
 final class ArticlesError extends ArticlesState {
   final String errorMessage ;
 
