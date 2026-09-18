@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
+part 'Sources_response_model.g.dart';
+class SourcesResponseModel extends Equatable {
 
-class SourcesResponseModel extends Equatable{
   SourcesResponseModel({required this.status, required this.sources});
-
   final String status;
   final List<SourceModel> sources;
 
@@ -16,19 +17,21 @@ class SourcesResponseModel extends Equatable{
   }
 
   Map<String, dynamic> toJson() {
-    return {'status': status, 'sources': sources.map(
-      (SourceModel e) {
+    return {
+      'status': status,
+      'sources': sources.map((SourceModel e) {
         return e.toJson();
-      },
-    ).toList()};
+      }).toList(),
+    };
   }
 
   @override
-
-  List<Object?> get props => [status,sources];
+  List<Object?> get props => [status, sources];
 }
 
-class SourceModel extends Equatable{
+
+@HiveType(typeId: 0)
+class SourceModel extends HiveObject with EquatableMixin {
   SourceModel({
     required this.id,
     required this.name,
@@ -39,18 +42,19 @@ class SourceModel extends Equatable{
     required this.country,
   });
 
+  @HiveField(0)
   final String id;
-
+  @HiveField(1)
   final String name;
-
+  @HiveField(2)
   final String description;
-
+  @HiveField(3)
   final String url;
-
+  @HiveField(4)
   final String category;
-
+  @HiveField(5)
   final String language;
-
+  @HiveField(6)
   final String country;
 
   factory SourceModel.fromJson(Map<String, dynamic> json) {
@@ -65,7 +69,7 @@ class SourceModel extends Equatable{
     );
   }
 
-   Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
@@ -78,6 +82,13 @@ class SourceModel extends Equatable{
   }
 
   @override
-
-  List<Object?> get props => [id,name,description,category,country,language,url];
+  List<Object?> get props => [
+    id,
+    name,
+    description,
+    category,
+    country,
+    language,
+    url,
+  ];
 }

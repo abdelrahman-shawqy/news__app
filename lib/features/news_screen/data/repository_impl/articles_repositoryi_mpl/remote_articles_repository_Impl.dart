@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-import 'package:news_appp/features/news_screen/data/data_sources/articles_data_source.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/articles_data_source.dart';
 import 'package:news_appp/features/news_screen/data/models/articles_model.dart';
 import 'package:news_appp/features/news_screen/domain/Failure.dart';
 import 'package:news_appp/features/news_screen/domain/repository/repository_articles/remote_articles_repository.dart';

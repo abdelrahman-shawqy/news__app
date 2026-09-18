@@ -2,8 +2,10 @@
 
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:news_appp/features/news_screen/data/data_sources/articles_data_source.dart';
-import 'package:news_appp/features/news_screen/data/data_sources/sources_data_source.dart';
+import 'package:news_appp/core/local/cache_helper.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/local_data_source/local_source_data_source.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/articles_data_source.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/sources_data_source.dart';
 import 'package:news_appp/features/news_screen/data/repository_impl/articles_repositoryi_mpl/remote_articles_repository_Impl.dart';
 import 'package:news_appp/features/news_screen/data/repository_impl/sources_repository_impl/remot_sources_repository_impl.dart';
 import 'package:news_appp/features/news_screen/domain/repository/repository_articles/remote_articles_repository.dart';
@@ -24,7 +26,7 @@ void configureDependencies(){
   )));
   getIt.registerLazySingleton<ApiHelper>(()=>ApiHelper(getIt<Dio>()));
   getIt.registerLazySingleton<SourcesDataSource>(()=>SourcesDataSource(getIt<ApiHelper>()));
-  getIt.registerLazySingleton<RemoteSourcesRepository>(()=>RemoteSourcesRepositoryImpl(getIt<SourcesDataSource>()));
+  getIt.registerLazySingleton<RemoteSourcesRepository>(()=>RemoteSourcesRepositoryImpl(getIt<SourcesDataSource>(),getIt<LocalSourceDataSource>()));
   getIt.registerLazySingleton<GetSourcesUseCase>(()=>GetSourcesUseCase(getIt<RemoteSourcesRepository>()));
   getIt.registerFactory<SourcesCubit>(()=>SourcesCubit(getIt<GetSourcesUseCase>()));
 
@@ -32,4 +34,7 @@ void configureDependencies(){
   getIt.registerLazySingleton<RemoteArticlesRepository>(()=>RemoteArticlesRepositoryImpl(getIt<ArticlesDataSource>()));
   getIt.registerLazySingleton<GetArticlesUseCase>(()=>GetArticlesUseCase(getIt<RemoteArticlesRepository>()));
   getIt.registerFactory<ArticlesCubit>(()=>ArticlesCubit(getIt<GetArticlesUseCase>()));
+
+  getIt.registerSingleton<HiveHelper>(HiveHelper());
+  getIt.registerLazySingleton<LocalSourceDataSource>(()=>LocalSourceDataSource(getIt<HiveHelper>()));
 }

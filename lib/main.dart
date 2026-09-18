@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_appp/features/news_screen/data/models/Sources_response_model.dart';
 import 'core/bloc/observer.dart';
 import 'core/dependency _njection/di.dart';
 import 'core/localization/app_localization.dart';
@@ -8,6 +9,7 @@ import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/themes/bloc/cubit.dart';
 import 'core/themes/bloc/states.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
@@ -15,6 +17,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await EasyLocalization.ensureInitialized();
+
+  await Hive.initFlutter();
+  Hive.registerAdapter(SourceModelAdapter());
 
   runApp(EasyLocalization(
       supportedLocales: AppLocalization.supportedLocales,
