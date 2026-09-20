@@ -12,12 +12,12 @@ class RemoteSourcesRepositoryImpl extends RemoteSourcesRepository{
   final SourcesDataSource sourcesDataSource ;
   final LocalSourceDataSource localSourceDataSource ;
   @override
-  Future<Either<Failure,SourcesResponseModel>> getSourcesData(String categoryId) async{
+  Future<Either<Failure,List<SourceModel>>> getSourcesData(String categoryId) async{
     try{
       final response = await sourcesDataSource.getSourecesData(categoryId);
       final sources  = SourcesResponseModel.fromJson(response.data);
       localSourceDataSource.saveSources(sources.sources, categoryId);
-      return Right(sources);
+      return Right(sources.sources);
 
     }on DioException catch(e){
 

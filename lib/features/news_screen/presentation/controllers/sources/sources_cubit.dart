@@ -14,7 +14,7 @@ class SourcesCubit extends Cubit<SourcesState> {
     sources.fold((error){
       emit(SourcesError(error.errorMessage));
     }, (success){
-      emit(SourcesSuccess(success.sources));
+      emit(SourcesSuccess(success));
     });
   }
 }

@@ -23,9 +23,9 @@ class GetSourcesUseCase {
   }
   Future<Either<Failure, List<SourceModel>?>> localCall(String categoryId){
     final localSource= localSourceRepository.getSources(categoryId);
-    return localSource ;
+    return localSource  ;
   }
-  Future<Either<Failure, SourcesResponseModel>> remoteCall(String categoryId) {
+  Future<Either<Failure, List<SourceModel>>> remoteCall(String categoryId) {
     final remoteSources = remoteSourcesRepository.getSourcesData(categoryId);
     return remoteSources;
   }
