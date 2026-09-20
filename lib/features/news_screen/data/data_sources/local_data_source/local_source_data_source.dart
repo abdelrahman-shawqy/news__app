@@ -9,5 +9,11 @@ class LocalSourceDataSource {
     return hiveHelper.saveSource(sourceModel, catId);
   }
 
+  Future<List<SourceModel>?> getSources(String catId){
+    return  hiveHelper.getSource(catId);
+  }
 
+  Future<void> deleteSources(String catId){
+    return hiveHelper.deleteSources(catId);
+  }
 }
