@@ -7,7 +7,7 @@ import 'package:news_appp/features/news_screen/domain/Failure.dart';
 import 'package:news_appp/features/news_screen/domain/repository/remote_repository/repository_sources/remot_sources_repository.dart';
 
 
-class RemoteSourcesRepositoryImpl extends RemoteSourcesRepository{
+class RemoteSourcesRepositoryImpl implements RemoteSourcesRepository{
   RemoteSourcesRepositoryImpl(this.sourcesDataSource,this.localSourceDataSource);
   final SourcesDataSource sourcesDataSource ;
   final LocalSourceDataSource localSourceDataSource ;

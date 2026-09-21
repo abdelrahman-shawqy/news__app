@@ -1,13 +1,19 @@
 
 import 'package:equatable/equatable.dart';
-class ArticlesModel extends Equatable {
+import 'package:hive/hive.dart';
+part 'articles_model.g.dart';
+@HiveType(typeId: 1)
+class ArticlesModel extends HiveObject with EquatableMixin {
   ArticlesModel({
     required this.status,
     required this.totalResults,
     required this.articles,
   });
+  @HiveField(0)
   final String status;
+  @HiveField(1)
   final int totalResults;
+  @HiveField(2)
   final List<Article> articles;
   factory ArticlesModel.fromJson(Map<String,dynamic>json){
     return ArticlesModel(
@@ -27,15 +33,23 @@ class ArticlesModel extends Equatable {
   @override
   List<Object?> get props => [status,totalResults,articles];
 }
-
-class Article extends Equatable{
+@HiveType(typeId: 2)
+class Article extends HiveObject with EquatableMixin{
+  @HiveField(0)
   final SourceModelArticle source ;
+  @HiveField(1)
   final String? author ;
+  @HiveField(2)
   final String? title ;
+  @HiveField(3)
   final String? description ;
+  @HiveField(4)
   final String? url ;
+  @HiveField(5)
   final String? urlToImage ;
+  @HiveField(6)
   final String? publishedAt ;
+  @HiveField(7)
   final String? content ;
   Article({required this.source, this.author, this.title, this.description, this.url,this.urlToImage,
     this.publishedAt, this.content});
@@ -67,9 +81,11 @@ class Article extends Equatable{
   List<Object?> get props => [source,author,title,description,url,urlToImage,publishedAt,content];
 
 }
-
-class SourceModelArticle extends Equatable{
+@HiveType(typeId: 3)
+class SourceModelArticle extends HiveObject with EquatableMixin{
+  @HiveField(0)
   final String? id ;
+  @HiveField(1)
   final String? name ;
   SourceModelArticle({this.id, this.name});
   @override

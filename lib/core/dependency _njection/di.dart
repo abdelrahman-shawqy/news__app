@@ -4,12 +4,15 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:news_appp/core/local/cache_helper.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/local_data_source/local_articles_data_source.dart';
 import 'package:news_appp/features/news_screen/data/data_sources/local_data_source/local_source_data_source.dart';
 import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/articles_data_source.dart';
 import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/sources_data_source.dart';
+import 'package:news_appp/features/news_screen/data/repository_impl/local_repository_impl/local_articles_repository_impl.dart';
 import 'package:news_appp/features/news_screen/data/repository_impl/local_repository_impl/local_source_repository_impl.dart';
 import 'package:news_appp/features/news_screen/data/repository_impl/remote_repository_impl/articles_repositoryi_mpl/remote_articles_repository_Impl.dart';
 import 'package:news_appp/features/news_screen/data/repository_impl/remote_repository_impl/sources_repository_impl/remot_sources_repository_impl.dart';
+import 'package:news_appp/features/news_screen/domain/repository/local_repository/local_articles_repository.dart';
 import 'package:news_appp/features/news_screen/domain/repository/local_repository/local_source_repository.dart';
 import 'package:news_appp/features/news_screen/domain/repository/remote_repository/repository_articles/remote_articles_repository.dart';
 import 'package:news_appp/features/news_screen/domain/repository/remote_repository/repository_sources/remot_sources_repository.dart';
@@ -44,8 +47,12 @@ void configureDependencies(){
   getIt.registerFactory<SourcesCubit>(()=>SourcesCubit(getIt<GetSourcesUseCase>()));
 
   getIt.registerLazySingleton<ArticlesDataSource>(()=>ArticlesDataSource(getIt<ApiHelper>()));
-  getIt.registerLazySingleton<RemoteArticlesRepository>(()=>RemoteArticlesRepositoryImpl(getIt<ArticlesDataSource>()));
-  getIt.registerLazySingleton<GetArticlesUseCase>(()=>GetArticlesUseCase(getIt<RemoteArticlesRepository>()));
+  getIt.registerLazySingleton<LocalArticlesDataSource>(()=>LocalArticlesDataSource(getIt<HiveHelper>()));
+
+  getIt.registerLazySingleton<RemoteArticlesRepository>(()=>RemoteArticlesRepositoryImpl(getIt<ArticlesDataSource>(),getIt<LocalArticlesDataSource>()));
   getIt.registerFactory<ArticlesCubit>(()=>ArticlesCubit(getIt<GetArticlesUseCase>()));
+  getIt.registerLazySingleton<LocalArticlesRepository>(()=>LocalArticlesRepositoryImpl(getIt<LocalArticlesDataSource>()));
+  getIt.registerLazySingleton<GetArticlesUseCase>(()=>GetArticlesUseCase(getIt<RemoteArticlesRepository>(),getIt<LocalArticlesRepository>(),getIt<InternetConnection>()));
+
 
 }

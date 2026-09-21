@@ -11,7 +11,7 @@ class ArticlesCubit extends Cubit<ArticlesState> {
 
   final GetArticlesUseCase getArticlesUseCase ;
   Future <void>getArticles(String sourceId)async{
-    final article = await getArticlesUseCase.getArticlesData(sourceId);
+    final article = await getArticlesUseCase.call(sourceId);
     article.fold((error){
       emit(ArticlesError(error.errorMessage));
     }, (success){

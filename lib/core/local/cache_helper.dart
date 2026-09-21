@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:news_appp/features/news_screen/data/models/Sources_response_model.dart';
+import 'package:news_appp/features/news_screen/data/models/articles_model.dart';
 class HiveHelper {
   final String sourceBoxName = 'Sources';
 
@@ -23,6 +24,29 @@ class HiveHelper {
   Future<void> deleteSources(String catId)async{
     var box =await openSourceBox() ;
     box.delete('source_$catId');
+  }
+
+  final String articlesBoxName = 'articles';
+
+  Future<Box<ArticlesModel>> openArticles()async{
+    if(Hive.isBoxOpen(articlesBoxName)){
+      return  Hive.box<ArticlesModel>(articlesBoxName);
+    }
+    else{
+      return await Hive.openBox<ArticlesModel>(articlesBoxName);
+    }
+  }
+
+  Future<void> saveArticles(ArticlesModel articlesModel,String sourceId)async{
+    var box = await openArticles();
+    box.put('articles_$sourceId', articlesModel);
+    print("from HiveHelper the data is alrady saved ${articlesModel.articles.length}");
+
+  }
+
+  Future<ArticlesModel?> getArticles(String sourceId)async{
+    var box = await openArticles();
+    return box.get('articles_$sourceId');
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_appp/features/news_screen/data/models/Sources_response_model.dart';
+import 'package:news_appp/features/news_screen/data/models/articles_model.dart';
 import 'core/bloc/observer.dart';
 import 'core/dependency _njection/di.dart';
 import 'core/localization/app_localization.dart';
@@ -20,6 +21,9 @@ void main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(SourceModelAdapter());
+  Hive.registerAdapter(ArticlesModelAdapter());
+  Hive.registerAdapter(SourceModelArticleAdapter());
+  Hive.registerAdapter(ArticleAdapter());
 
   runApp(EasyLocalization(
       supportedLocales: AppLocalization.supportedLocales,
