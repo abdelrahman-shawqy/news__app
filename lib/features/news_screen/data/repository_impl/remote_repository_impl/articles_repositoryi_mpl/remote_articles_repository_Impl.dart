@@ -1,0 +1,29 @@
+import 'package:dio/dio.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:news_appp/features/news_screen/data/data_sources/local_data_source/local_articles_data_source.dart';
+
+import 'package:news_appp/features/news_screen/data/data_sources/remote_data_soource/articles_data_source.dart';
+import 'package:news_appp/features/news_screen/data/models/articles_model.dart';
+import 'package:news_appp/features/news_screen/domain/Failure.dart';
+import 'package:news_appp/features/news_screen/domain/repository/remote_repository/repository_articles/remote_articles_repository.dart';
+
+class RemoteArticlesRepositoryImpl implements  RemoteArticlesRepository{
+  RemoteArticlesRepositoryImpl(this.articlesDataSource,this.localArticlesDataSource);
+  final ArticlesDataSource articlesDataSource ;
+  final LocalArticlesDataSource localArticlesDataSource ;
+  @override
+  Future<Either<Failure,ArticlesModel>>getArticles(String sourceId)async {
+    try{
+      final articlesResponse=await articlesDataSource.getArticlesData(sourceId);
+      final articlesData = ArticlesModel.fromJson(articlesResponse.data);
+      print(' ######### Saving articles: ${articlesData.articles.length}');
+      await localArticlesDataSource.saveArticles(articlesData, sourceId);
+      return Right(articlesData);
+    }on DioException catch(e){
+      print('there are Exception form RemoteArticlesRepositoryImpl ##### ');
+      print(e.message);
+      print('${e.type}');
+      return Left(Failure(errorMessage:e.message??"Something went wrong from RemoteArticlesRepositoryImpl" ));
+    }
+  }
+}
