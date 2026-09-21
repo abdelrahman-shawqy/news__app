@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.homeScreen,
+      initialRoute: Routes.splash,
       onGenerateRoute: AppRouter.onGenerateRoute,
 
       localizationsDelegates: context.localizationDelegates,

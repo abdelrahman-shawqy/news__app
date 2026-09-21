@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_appp/core/themes/bloc/cubit.dart';
+import 'package:news_appp/core/themes/bloc/states.dart';
 
 import '../../../../core/constants/app_images.dart';
 import '../../../../core/routing/routes.dart';
@@ -54,10 +57,13 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    final isDark =
-        Theme.of(context).brightness == Brightness.dark;
+    return BlocBuilder<ThemeCubit, ThemeStates>(
+
+  builder: (context, state) {
+    final  isDark = context.read<ThemeCubit>().changeImagesThemeForSplashScreen;
+    var color = context.watch<ThemeCubit>().state.color ;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: color.primary,
       body: FadeTransition(
         opacity: _fadeAnimation,
         child: Center(
@@ -69,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: ScaleTransition(
                   scale: _scaleAnimation,
                   child: Image.asset(
-                    !isDark?
+                    isDark == false?
                     AppImages.splashLogo:AppImages.splashLogoDark,
                     height: 298,
                     width: 298,
@@ -80,9 +86,8 @@ class _SplashScreenState extends State<SplashScreen>
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Image.asset(
-                  !isDark
-                      ? AppImages.splashBranding
-                      : AppImages.splashBrandingDark,
+                  isDark == false
+                      ? AppImages.splashBranding: AppImages.splashBrandingDark,
                   height: 85,
                   width: 214,
                 ),
@@ -92,5 +97,7 @@ class _SplashScreenState extends State<SplashScreen>
         ),
       ),
     );
+  },
+);
   }
 }

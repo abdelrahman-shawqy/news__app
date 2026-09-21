@@ -14,4 +14,24 @@ class ThemeCubit extends Cubit<ThemeStates> {
         : LightColors();
     emit(ChangeThemeStates(newColor));
   }
+  String changeSubTitleForThemeDrawer(ThemeStates state){
+    if(state.color is DarkColors){
+      return 'dark' ;
+    }
+    else if(state.color is LightColors ){
+      return 'light' ;
+    }
+    else{
+      return 'light' ;
+    }
+  }
+  bool  changeImagesThemeForSplashScreen(){
+    if( state is DarkColors){
+      return true ;
+    }
+    else{
+      return false ;
+    }
+  }
+
 }

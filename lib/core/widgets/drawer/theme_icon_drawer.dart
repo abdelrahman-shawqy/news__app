@@ -30,7 +30,6 @@ class ThemeIconDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = context.watch<ThemeCubit>().state.color;
     final styleColor =AppTextStyles(color: color);
-
     return BlocBuilder<ThemeCubit, ThemeStates>(
   builder: (context, state) {
     return Column(
@@ -65,7 +64,7 @@ class ThemeIconDrawer extends StatelessWidget {
                     ),
                     hint: Text(
                       // TODO : this subtitle must be light or what the app will start
-                        subTitle,
+                        context.read<ThemeCubit>().changeSubTitleForThemeDrawer(state),
                         style:  styleColor.b700DrawerTest
                     ),
 
@@ -120,5 +119,5 @@ class ThemeIconDrawer extends StatelessWidget {
   },
 );
   }
-
+  
 }
